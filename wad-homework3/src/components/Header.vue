@@ -5,7 +5,7 @@
       <li><router-link to="/addPost">Add Post</router-link></li>
     </ul>
     <div class="dropdown">
-      <input type="image" src="src/assets/logo.png" v-on:click="dropDownFunction()" class="dropbtn" width="50"
+      <input type="image" src="@/assets/logo.png" v-on:click="dropDownFunction()" class="dropbtn" width="50"
              height="50"/>
       <div id="drop" class="dropdown-content">
         <a href="https://www.youtube.com/watch?v=Vy8moBcKVIM">John Deez</a>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import logo from "@/assets/logo.png"
 import HomeView from "@/views/HomeView";
 import AddPost from "@/views/AddPostView";
 export default {

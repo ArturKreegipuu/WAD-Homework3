@@ -1,20 +1,62 @@
 <template>
-  <PostsFeed/>
+  <div class="gridContainer">
+    <div class="side"></div>
+    <div id="feed">
+      <template v-for="post in postsList" :key="post.id">
+        <Post v-bind:content="post"/>
+      </template>
+    </div>
+    <div class="side"></div>
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import PostsFeed from '@/components/PostsFeed.vue'
+
+import Post from "@/components/Post";
 
 export default {
   name: 'HomeView',
-  components: {
-    PostsFeed
+  components: {Post},
+  data() {
+    return {
+      postsList: this.getPostsData()
+    };
+  },
+  methods: {
+    getPostsData() {
+      fetch("http://myjson.dit.upm.es/api/bins/7ydi")
+          .then(response => response.json())
+          .then(data => (this.postsList = data));
+    }
   }
 }
 </script>
 
 <style>
+/* Feed of posts */
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto 50% auto;
+}
+
+#feed {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 10px auto;
+}
+
+.side {
+  background-color: #c2f8cbff;
+  border-radius: 10px;
+  margin: 10px;
+  width: auto;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.75);
+}
+
+p ~ span {
+  color: red;
+}
 .postHeader {
   display: flex;
   flex-direction: row;
