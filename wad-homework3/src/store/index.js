@@ -15,7 +15,7 @@ export default createStore({
                     userName: post.userName,
                     postId: post.id,
                     post: post.post,
-                    postImage: post.image,
+                    image: post.image,
                     createTime: post.createTime
                 }
             }
