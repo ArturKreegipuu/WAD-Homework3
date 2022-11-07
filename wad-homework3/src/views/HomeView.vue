@@ -20,16 +20,15 @@ export default {
   name: 'HomeView',
   components: {Footer, Post},
   data() {
-    return {
-      postsList: this.getPostsData()
-    };
+    return {};
   },
-  methods: {
-    getPostsData() {
-      fetch("http://myjson.dit.upm.es/api/bins/7ydi")
-          .then(response => response.json())
-          .then(data => (this.postsList = data));
+  computed: {
+    postsList() {
+      return this.$store.state.postsList
     }
+  },
+  mounted() {
+    this.$store.dispatch("fetchPosts")
   }
 }
 </script>
