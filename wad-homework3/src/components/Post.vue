@@ -11,7 +11,8 @@
       <p>{{content.post}}</p>
     </div>
     <div class="postFooter">
-      <img class="like" src="@/assets/like.png" alt="like"/>
+      <img class="like" v-on:click="IncreaseLikes" src="@/assets/like.png" alt="like"/>
+      <p>{{this.likes}}</p>
     </div>
   </div>
 </template>
@@ -21,7 +22,16 @@ export default {
   name: "Post",
   props:{
     content: Object,
-
+  },
+  data(){
+    return{
+      likes: 0
+    }
+  },
+  methods: {
+    IncreaseLikes: function (){
+      this.likes +=1;
+    }
   }
 }
 </script>

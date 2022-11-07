@@ -5,6 +5,7 @@
       <template v-for="post in postsList" :key="post.id">
         <Post v-bind:content="post"/>
       </template>
+      <button class="resetLikes" v-on:click="ResetLikes">Reset likes</button>
     </div>
     <div class="side"></div>
   </div>
@@ -102,6 +103,15 @@ p ~ span {
   margin: auto;
   width: 100%;
   height: 100%;
+}
+
+.resetLikes {
+  position: center;
+  border-radius: 10px;
+  background-color: #4267B2;
+  padding: 5px;
+  margin: auto;
+  width: auto;
 }
 
 footer {
