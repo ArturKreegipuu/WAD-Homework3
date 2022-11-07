@@ -8,15 +8,17 @@
     </div>
     <div class="side"></div>
   </div>
+  <Footer/>
 </template>
 
 <script>
 
 import Post from "@/components/Post";
+import Footer from "@/components/Footer";
 
 export default {
   name: 'HomeView',
-  components: {Post},
+  components: {Footer, Post},
   data() {
     return {
       postsList: this.getPostsData()
@@ -101,5 +103,16 @@ p ~ span {
   margin: auto;
   width: 100%;
   height: 100%;
+}
+
+footer {
+  background-color: #69a2b0ff;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.75);
+  margin-top: auto;
+
+
 }
 </style>

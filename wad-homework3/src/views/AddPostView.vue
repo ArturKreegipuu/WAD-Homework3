@@ -17,11 +17,14 @@
       <input class="loginButton" type="submit" value="Create post">
     </form>
   </div>
+  <Footer/>
 </template>
 
 <script>
+import Footer from "@/components/Footer";
 export default {
-  name: 'AddPostView'
+  name: 'AddPostView',
+  components: {Footer}
 }
 </script>
 
@@ -73,5 +76,21 @@ table + input { /*  Adjacent Sibling Selector */
   height: 20px;
   margin: 10px auto;
   justify-content: center;
+
+}
+
+footer {
+  background-color: #69a2b0ff;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.75);
+  margin-top: auto;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+
 }
 </style>
