@@ -12,7 +12,7 @@
     </div>
     <div class="postFooter">
       <img class="like" v-on:click="IncreaseLikes" src="@/assets/like.png" alt="like"/>
-      <p>{{this.likes}}</p>
+      <p class="likes" v-if="likes > 0">{{this.likes}}</p>
     </div>
   </div>
 </template>
