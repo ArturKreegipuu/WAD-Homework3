@@ -112,6 +112,10 @@ p ~ span {
   padding: 5px;
   margin: auto;
   width: auto;
+  cursor: pointer;
+}
+.resetLikes:hover{
+  opacity: 70%;
 }
 
 footer {

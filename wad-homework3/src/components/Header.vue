@@ -2,7 +2,7 @@
   <header class="header">
     <ul class="nav">
       <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/addPost">Add Post</router-link></li>
+      <li><router-link to="/signup">Sign up</router-link></li>
     </ul>
     <div class="dropdown">
       <img src="@/assets/logo.png" v-on:click="dropDownFunction()" class="dropbtn" width="50"
@@ -19,10 +19,10 @@
 
 <script>
 import HomeView from "@/views/HomeView";
-import AddPost from "@/views/AddPostView";
+import SignUp from "@/components/SignUp";
 export default {
   name: "Header",
-  components: {HomeView, AddPost},
+  components: {HomeView, SignUp},
   methods:{
     dropDownFunction:function(){
       document.getElementById("drop").classList.toggle("show")
@@ -30,6 +30,7 @@ export default {
     },
 
   }
+
 }
 </script>
 
