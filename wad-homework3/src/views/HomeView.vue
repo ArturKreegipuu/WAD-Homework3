@@ -77,6 +77,10 @@ p ~ span {
 }
 
 .postFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 5px;
   background-color: transparent;
 }
@@ -103,7 +107,9 @@ p ~ span {
 .like:hover {
   opacity: 30%;
 }
-
+.likes {
+  margin-right: 0px;
+}
 .postPic {
   margin: auto;
   width: 100%;
