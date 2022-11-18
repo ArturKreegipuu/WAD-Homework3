@@ -102,6 +102,7 @@ p ~ span {
 .like {
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 
 .like:hover {
