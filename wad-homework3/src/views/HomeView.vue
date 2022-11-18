@@ -3,7 +3,7 @@
     <div class="side"></div>
     <div id="feed">
       <template v-for="post in postsList" :key="post.id">
-        <Post v-bind:content="post"/>
+        <Post ref="p" v-bind:content="post"/>
       </template>
       <button class="resetLikes" v-on:click="ResetLikes">Reset likes</button>
     </div>
@@ -26,11 +26,16 @@ export default {
   computed: {
     postsList() {
       return this.$store.state.postsList
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("fetchPosts")
-  }
+  },
+  methods: {
+    ResetLikes: function () {
+      this.$store.commit("resetLikes")
+      }
+    }
 }
 </script>
 

@@ -1,4 +1,5 @@
 import {createStore} from 'vuex'
+import post from "@/components/Post";
 
 export default createStore({
     state: {
@@ -71,10 +72,23 @@ export default createStore({
                     postId: post.id,
                     post: post.post,
                     image: post.image,
-                    createTime: post.createTime
+                    createTime: post.createTime,
+                    likes: post.likes
                 }
             }
         )
+        },
+        resetLikes: state => {
+            state.postsList.forEach(post => {
+                post.likes = 0;
+            })
+        },
+        increaseLike: (state, givenId) => {
+            state.postsList.forEach(post => {
+                if (post.id == givenId){
+                    post.likes +=1;
+                }
+            })
         }
     },
     /*actions: {

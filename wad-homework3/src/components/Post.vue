@@ -12,7 +12,7 @@
     </div>
     <div class="postFooter">
       <img class="like" v-on:click="IncreaseLikes" src="@/assets/like.png" alt="like"/>
-      <p class="likes" v-if="likes > 0">{{this.likes}}</p>
+      <p class="likes" v-if="content.likes > 0">{{content.likes}}</p>
     </div>
   </div>
 </template>
@@ -23,14 +23,9 @@ export default {
   props:{
     content: Object,
   },
-  data(){
-    return{
-      likes: 0
-    }
-  },
   methods: {
     IncreaseLikes: function (){
-      this.likes +=1;
+      this.$store.commit("increaseLike", this.$.vnode.key)
     }
   }
 }
