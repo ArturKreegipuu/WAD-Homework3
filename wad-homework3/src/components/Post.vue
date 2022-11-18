@@ -12,8 +12,8 @@
     </div>
     <div class="postFooter">
       <img class="like" v-on:click="IncreaseLikes" src="@/assets/like.png" alt="like"/>
-      <p class="likes" v-if="content.likes > 0">{{content.likes}} likes</p>
-      <p class="likes" v-if="content.likes == 0">{{content.likes}} likes</p>
+      <p class="likes" v-if="content.likes >= 0 && content.likes != 1">{{content.likes}} likes</p>
+      <p class="likes" v-if="content.likes == 1">{{content.likes}} like</p>
     </div>
   </div>
 </template>
