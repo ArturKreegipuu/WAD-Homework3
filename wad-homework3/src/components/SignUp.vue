@@ -3,68 +3,58 @@
     <div>
       <form @submit.prevent="registerMe">
         <div>
-        <label>Email</label>
-        <input type="email" id="email" v-model="form" placeholder="Email" required>
+          <label>Email</label>
+          <input type="email" id="email" v-model="user.email" placeholder="Email" required>
         </div>
         <div>
-        <label>Password</label>
-        <input type="Password" id="password" v-model="form" placeholder="Password" required>
+          <label>Password</label>
+          <input type="Password" id="password" v-model="user.password" placeholder="Password" required>
         </div>
-        <input class="signUpButton" type="submit" @click.stop.prevent="submit()" value="Sign up">
+        <input class="signUpButton" type="submit" @click.stop.prevent="registerMe()" value="Sign up">
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import {
-  required,
-  minLength,
-  maxLength,
-  sameAs,
-} from "vuelidate/lib/validators";
 export default {
   name: "SignUp",
-  data(){
+  data() {
     return {
-      form : null
+      user: {
+        password: "",
+        email: ""
+      }
     }
   },
-  validations: {
-    user: {
-      password: {
-        required,
-        valid: function (value) {
-          const containsUppercase = /[A-Z]/.test(value);
-          const containsLowercase = /[a-z]/.test(value);
-          const containsNumber = /[0-9]/.test(value);
-          const containsSpecial = /[#?!@$%^&*-]/.test(value);
-          const startUpper = /^[A-Z]/.test(value);
-          return (
-              containsUppercase &&
-              containsLowercase &&
-              containsNumber &&
-              containsSpecial &&
-              startUpper
-          );
-        },
-        minLength: minLength(8),
-        maxLength: maxLength(15),
-      },
 
-    },
-  },
   methods: {
-    submit(){
+    submit() {
       this.$router.push("/");
     },
+
+    validatePassword(value) {
+      const containsUppercase = /[A-Z]/.test(value);
+      const containsLowercase = /[a-z]/.test(value);
+      const containsNumber = /[0-9]/.test(value);
+      const containsSpecial = /_/.test(value);
+      const startUpper = /^[A-Z]/.test(value);
+      return containsUppercase &&
+          containsLowercase &&
+          containsNumber &&
+          containsSpecial &&
+          startUpper
+    },
+
     registerMe() {
-      this.submitted = true;
-      this.$v.$touch();
-      if (this.$v.$invalid) {
+
+      if (!this.validatePassword(this.user.password)) {
+        alert("Password not valid. Password must start with an uppercase letter, " +
+            "contain at least two lowercase characters, include at least one " +
+            "numeric value, include the character '_' and start with an uppercase letter")
         return false; // stop here if form is invalid
       } else {
-        alert("Form Valid. Move to next screen");
+        this.submit()
       }
     },
   },
@@ -88,6 +78,7 @@ div div {
   display: flex;
   justify-content: center;
 }
+
 label {
   display: inline-block;
   align-content: baseline;
@@ -111,7 +102,8 @@ label {
   cursor: pointer;
 
 }
-.signUpButton:hover{
+
+.signUpButton:hover {
   opacity: 85%;
 }
 
