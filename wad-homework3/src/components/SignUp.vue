@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div>
-      <form>
+      <form @submit.prevent="registerMe">
         <div>
         <label>Email</label>
         <input type="email" id="email" v-model="form" placeholder="Email" required>
@@ -17,6 +17,12 @@
 </template>
 
 <script>
+import {
+  required,
+  minLength,
+  maxLength,
+  sameAs,
+} from "vuelidate/lib/validators";
 export default {
   name: "SignUp",
   data(){
@@ -24,11 +30,45 @@ export default {
       form : null
     }
   },
+  validations: {
+    user: {
+      password: {
+        required,
+        valid: function (value) {
+          const containsUppercase = /[A-Z]/.test(value);
+          const containsLowercase = /[a-z]/.test(value);
+          const containsNumber = /[0-9]/.test(value);
+          const containsSpecial = /[#?!@$%^&*-]/.test(value);
+          const startUpper = /^[A-Z]/.test(value);
+          return (
+              containsUppercase &&
+              containsLowercase &&
+              containsNumber &&
+              containsSpecial &&
+              startUpper
+          );
+        },
+        minLength: minLength(8),
+        maxLength: maxLength(15),
+      },
+
+    },
+  },
   methods: {
     submit(){
       this.$router.push("/");
-    }
-  }
+    },
+    registerMe() {
+      this.submitted = true;
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return false; // stop here if form is invalid
+      } else {
+        alert("Form Valid. Move to next screen");
+      }
+    },
+  },
+
 }
 </script>
 
