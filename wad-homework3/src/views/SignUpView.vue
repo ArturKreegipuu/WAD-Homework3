@@ -10,7 +10,7 @@ export default {
   components: {SignUp, Footer}
 }
 </script>
-<style>
+<style scoped>
 footer {
   background-color: #69a2b0ff;
   border-radius: 5px;
