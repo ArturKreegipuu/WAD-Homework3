@@ -1,16 +1,16 @@
 <template>
   <div class="login">
     <div>
-      <form action="index.html" method="POST">
+      <form>
         <div>
         <label>Email</label>
-        <input type="email" id="email" placeholder="Email" required>
+        <input type="email" id="email" v-model="form" placeholder="Email" required>
         </div>
         <div>
         <label>Password</label>
-        <input type="Password" id="password" placeholder="Password" required>
+        <input type="Password" id="password" v-model="form" placeholder="Password" required>
         </div>
-        <input class="signUpButton" type="submit" value="Sign up">
+        <input class="signUpButton" type="submit" @click.stop.prevent="submit()" value="Sign up">
       </form>
     </div>
   </div>
@@ -18,7 +18,17 @@
 
 <script>
 export default {
-  name: "SignUp"
+  name: "SignUp",
+  data(){
+    return {
+      form : null
+    }
+  },
+  methods: {
+    submit(){
+      this.$router.push("/");
+    }
+  }
 }
 </script>
 
